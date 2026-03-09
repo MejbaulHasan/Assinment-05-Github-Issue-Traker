@@ -103,3 +103,15 @@ const allIssuesDisplay = (issues, id) => {
   manageLoader(false);
   // console.log(openBtnArray);
 };
+const btnAll = (id) => {
+  allIssues(id);
+};
+
+const numberIssus = document.getElementById("numberIssus");
+
+const allBtn = document.getElementById("all");
+allBtn.addEventListener("click", () => {
+  removeBtnColor();
+  allBtn.classList.add("btn-primary");
+  numberIssus.innerText = allBtnArray;
+});
