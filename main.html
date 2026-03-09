@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Github-Home</title>
+    <!-- Tailwind + daisyui -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/daisyui@5"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+    <!--Geist fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
+    <!-- font-awesome cdn -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+      integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+  <style>
+    * {
+      font-family: "Geist", sans-serif;
+    }
+  </style>
+  <body>
+    <header class="shadow-sm card">
+      <div class="lg:w-10/12 w-11/12 mx-auto mt-5 pb-5 lg:flex justify-between">
+        <div class="flex items-center justify-center gap-2">
+          <div>
+            <img class="w-8" src="./assets/github-logo.png" alt="" />
+          </div>
+          <h1 class="font-semibold text-2xl">GitHub Issues Tracker</h1>
+        </div>
+
+        <div class="flex gap-2 items-center mt-5 lg:mt-0 md:justify-center">
+          <label class="input">
+            <svg
+              class="h-[1em] opacity-50"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+            >
+              <g
+                stroke-linejoin="round"
+                stroke-linecap="round"
+                stroke-width="2.5"
+                fill="none"
+                stroke="currentColor"
+              >
+                <circle cx="11" cy="11" r="8"></circle>
+                <path d="m21 21-4.3-4.3"></path>
+              </g>
+            </svg>
+            <input
+              id="inputSearch"
+              type="search"
+              required
+              placeholder="Search"
+            />
+          </label>
+
+          <button
+            id="searchBtn"
+            class="btn btn-primary font-semibold text-[16px]"
+          >
+            Search
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main class="bg-[#F8FAFC] lg:p-10 p-4">
+      <section
+        class="md:w-10/12 mx-auto pt-5 shadow-md p-5 bg-white rounded-sm"
+      >
+        <div class="md:space-x-2 space-x-3">
+          <button
+            id="all"
+            onclick="btnAll('all')"
+            class="btn btn-primary btn-issu md:px-10 px-5"
+          >
+            All
+          </button>
+          <button
+            id="open"
+            onclick="btnAll('open')"
+            class="btn btn-issu md:px-10 px-5"
+          >
+            Open
+          </button>
+          <button
+            id="closed"
+            onclick="btnAll('closed')"
+            class="btn btn-issu md:px-10 px-5"
+          >
+            Closed
+          </button>
+        </div>
+      </section>
+
+      <section
+        class="md:w-10/12 mx-auto pt-5 shadow-lg p-5 bg-white rounded-sm mt-5 flex justify-between items-center border-b-2 border-gray-200"
+      >
+        <div class="flex items-center gap-2">
+          <div
+            class="md:bg-[#ECE4FF] md:rounded-full w-12 h-12 flex items-center justify-center"
+          >
+            <img src="./assets/Aperture.png" alt="" />
+          </div>
+          <div>
+            <h1 class="text-xl font-semibold">
+              <span id="numberIssus">50</span> Issues
+            </h1>
+
+            <p class="text-[#64748B]">Track and manage your project issues</p>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-4">
+          <div class="flex gap-2 items-center">
+            <div class="bg-green-600 rounded-full w-2.5 h-2.5"></div>
+            <h1 class="font-bold">Open</h1>
+          </div>
+          <div class="flex gap-2 items-center">
+            <div class="bg-purple-600 rounded-full w-2.5 h-2.5"></div>
+            <h1 class="font-bold">Closed</h1>
+          </div>
+        </div>
+      </section>
+
+      <!-- spinner -->
+      <section id="spinner" class="text-center my-10 hidden">
+        <span class="loading loading-spinner loading-xl"></span>
+      </section>
+
+      <section
+        id="card-container"
+        class="md:w-10/12 mx-auto grid grid-cols-1 shadow-lg p-5 bg-white rounded-sm sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4 gap-5"
+      ></section>
+    </main>
+
+    <dialog id="word_modal" class="modal modal-bottom sm:modal-middle">
+      <section class="modal-box">
+        <div id="details-container"></div>
+        <div class="modal-action">
+          <form method="dialog">
+            <!-- if there is a button in form, it will close the modal -->
+            <button class="btn btn-primary">Close</button>
+          </form>
+        </div>
+      </section>
+    </dialog>
+
+    <script src="script/main.js"></script>
+  </body>
+</html>
