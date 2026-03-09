@@ -115,3 +115,23 @@ allBtn.addEventListener("click", () => {
   allBtn.classList.add("btn-primary");
   numberIssus.innerText = allBtnArray;
 });
+const openBtn = document.getElementById("open");
+openBtn.addEventListener("click", () => {
+  removeBtnColor();
+  openBtn.classList.add("btn-primary");
+  numberIssus.innerText = openBtnArray;
+});
+
+const closed = document.getElementById("closed");
+closed.addEventListener("click", () => {
+  removeBtnColor();
+  closed.classList.add("btn-primary");
+  numberIssus.innerText = closedBtnArray;
+});
+
+const removeBtnColor = () => {
+  const btns = document.querySelectorAll(".btn-issu");
+  btns.forEach((btn) => {
+    btn.classList.remove("btn-primary");
+  });
+};
