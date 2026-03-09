@@ -46,7 +46,7 @@ const allIssuesDisplay = (issues, id) => {
                 <div class="flex justify-between items-center pb-2">
                   <img  src= "${issue.status === "open" ? "assets/Open-Status.png" : "assets/Closed-Status.png"}" alt="" />
 
-                  <div class="${issue.priority.toUpperCase() === "HIGH" ? "bg-red-200" : issue.priority.toUpperCase() === "MEDIUM" ? "bg-yellow-200" : "bg-gray-200"} rounded-2xl px-6 py-1">
+                  <div class="${issue.priority.toUpperCase() === "HIGH" ? "bg-red-200" : issue.priority.toUpperCase() === "MEDIUM" ? "bg-yellow-100" : "bg-gray-200"} rounded-2xl px-6 py-1">
 
                     <h1 class="text-[12px] ${issue.priority.toUpperCase() == "HIGH" ? "text-red-500" : issue.priority.toUpperCase() === "MEDIUM" ? "text-[#F59E0B]" : "text-gray-500"}">${issue.priority.toUpperCase()}</h1>
                   </div>
@@ -60,8 +60,8 @@ const allIssuesDisplay = (issues, id) => {
                 <div class="flex flex-wrap items-center gap-2 pb-2 pt-5">
                 <div class="${
                   issue.labels[0] === "enhancement"
-                    ? "bg-green-400 text-white"
-                    : "bg-red-200 text-red-500"
+                    ? "bg-blue-200 text-white"
+                    : "bg-purple-200 text-pink-500"
                 } rounded-2xl px-2 py-1 flex items-center gap-2">
 
                 <i class="${
@@ -76,7 +76,7 @@ const allIssuesDisplay = (issues, id) => {
 
                </div>
 
-          <div class="bg-[#FDE68A]/60 rounded-2xl px-2 py-1 flex items-center gap-2 
+          <div class="bg-amber-200 rounded-2xl px-2 py-1 flex items-center gap-2 
           text-[#f18408] ${issue.labels[1] === undefined ? "hidden" : ""}">
 
               <i class="fa-solid fa-life-ring"></i>
@@ -167,8 +167,8 @@ const modalDetailsDisplay = (word) => {
     <div class="flex flex-wrap items-center gap-2 pb-2 pt-5">
                 <div class="${
                   word.labels[0] === "enhancement"
-                    ? "bg-green-400 text-white"
-                    : "bg-red-200 text-red-500"
+                    ? "bg-blue-400 text-white"
+                    : "bg-red-300 text-red-500"
                 } rounded-2xl px-2 py-1 flex items-center gap-2">
 
                 <i class="${
