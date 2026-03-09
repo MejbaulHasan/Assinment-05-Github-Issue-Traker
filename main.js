@@ -135,3 +135,83 @@ const removeBtnColor = () => {
     btn.classList.remove("btn-primary");
   });
 };
+const modalBtn = (id) => {
+  fetch(`https://phi-lab-server.vercel.app/api/v1/lab/issue/${id}`).then(
+    (res) => res.json().then((data) => modalDetailsDisplay(data.data)),
+  );
+};
+
+const modalDetailsDisplay = (word) => {
+  const detailsContainer = document.getElementById("details-container");
+
+  detailsContainer.innerHTML = `
+  <div>
+    <h1 class="font-bold text-xl mb-2">${word.title}</h1>
+
+    <div class="flex gap-7 items-center">
+      <div class="${
+        word.status === "open" ? "bg-green-400" : "bg-purple-400"
+      } px-2 text-[14px] rounded-xl text-white">
+        ${word.status}
+      </div>
+
+      <li class="text-[#647488]">
+        <p class="text-[12px]">Opened by ${word.author}</p>
+      </li>
+
+      <li class="text-[#647488]">
+        <p class="text-[12px]">${word.createdAt}</p>
+      </li>
+    </div>
+
+    <div class="flex flex-wrap items-center gap-2 pb-2 pt-5">
+                <div class="${
+                  word.labels[0] === "enhancement"
+                    ? "bg-green-400 text-white"
+                    : "bg-red-200 text-red-500"
+                } rounded-2xl px-2 py-1 flex items-center gap-2">
+
+                <i class="${
+                  word.labels[0] === "enhancement"
+                    ? "fa-solid fa-wand-magic-sparkles"
+                    : "fa-solid fa-bug"
+                }"></i>
+
+                <h1 class="text-[12px]">
+                  ${word.labels[0] === undefined ? "No Bug" : word.labels[0]}
+                </h1>
+
+               </div>
+
+          <div class="bg-[#FDE68A]/60 rounded-2xl px-2 py-1 flex items-center gap-2 
+          text-[#f18408] ${word.labels[1] === undefined ? "hidden" : ""}">
+
+              <i class="fa-solid fa-life-ring"></i>
+          <h1 class="text-[12px]">
+          ${word.labels[1] === undefined ? "" : word.labels[1]}
+          </h1>
+            </div>
+
+    <p class="text-[#64748B] text-[14px] mt-4">
+      ${word.description}
+    </p>
+
+    <div class="bg-gray-200 p-4 rounded-md flex justify-start gap-32 mt-5 w-full">
+      <div>
+        <p class="text-[#64748B]">Assignee:</p>
+        <p class="font-bold">${word.author}</p>
+      </div>
+
+      <div>
+        <p class="text-[#64748B]">Priority:</p>
+        <div class="bg-red-400 px-3 rounded-xl text-white">
+          ${word.priority}
+        </div>
+      </div>
+    </div>
+
+  </div>
+  `;
+
+  document.getElementById("word_modal").showModal();
+};
