@@ -215,3 +215,19 @@ const modalDetailsDisplay = (word) => {
 
   document.getElementById("word_modal").showModal();
 };
+document.getElementById("searchBtn").addEventListener("click", () => {
+  const input = document.getElementById("inputSearch");
+  const searchValue = input.value.trim().toLowerCase();
+  console.log(searchValue);
+
+  fetch(`https://phi-lab-server.vercel.app/api/v1/lab/issues`).then((res) =>
+    res.json().then((data) => {
+      const allWord = data.data;
+      const filterWords = allWord.filter((word) =>
+        word.title.toLowerCase().includes(searchValue),
+      );
+      allIssuesDisplay(filterWords, "all");
+      numberIssus.innerText = filterWords.length;
+    }),
+  );
+});
